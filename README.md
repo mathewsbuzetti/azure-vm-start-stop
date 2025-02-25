@@ -252,8 +252,8 @@ Os parâmetros abaixo devem ser configurados nos agendamentos do Runbook:
 
 | Parâmetro | Descrição | Exemplo | Obrigatório |
 |-----------|-----------|---------|-------------|
-| `TagName` | Nome da tag para identificar as VMs | "Ambiente" | ✅ |
-| `TagValue` | Valor da tag para filtrar as VMs | "Desenvolvimento" | ✅ |
+| `TagName` | Nome da tag para identificar as VMs | "start" | ✅ |
+| `TagValue` | Valor da tag para filtrar as VMs | "08:00" | ✅ |
 | `Shutdown` | Define a ação (true = desligar, false = iniciar) | true | ✅ |
 
 **Exemplo de configuração para agendamento matutino:**
