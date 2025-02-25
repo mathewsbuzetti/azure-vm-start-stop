@@ -81,33 +81,6 @@ Este script PowerShell automatiza o processo de inicialização e desligamento d
 
 ## 📋 Pré-requisitos
 
-<div align="center">
-  <table>
-    <tr>
-      <td align="center" width="20%">
-        <img src="https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/subscriptionicon.png" width="48" height="48" alt="Subscription"><br/>
-        <b>Subscription</b>
-      </td>
-      <td align="center" width="20%">
-        <img src="https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/ARMExplorer.png" width="48" height="48" alt="Automation Account"><br/>
-        <b>Automation Account</b>
-      </td>
-      <td align="center" width="20%">
-        <img src="https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/azure-government.png" width="48" height="48" alt="Managed Identity"><br/>
-        <b>Managed Identity</b>
-      </td>
-      <td align="center" width="20%">
-        <img src="https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/LogAnalyticsLog.svg" width="48" height="48" alt="Log Analytics"><br/>
-        <b>Log Analytics</b>
-      </td>
-      <td align="center" width="20%">
-        <img src="https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/vm.png" width="48" height="48" alt="Virtual Machines"><br/>
-        <b>Virtual Machines</b>
-      </td>
-    </tr>
-  </table>
-</div>
-
 - **Azure Subscription** ativa
 - **Automation Account** com privilégios de "Virtual Machine Contributor"
 - **Identidade Gerenciada** configurada para o Automation Account
@@ -122,21 +95,6 @@ Este script PowerShell automatiza o processo de inicialização e desligamento d
   <a href="https://github.com/mathewsbuzetti/azure-infrastructure-template/blob/main/Scripts/Script_Start_e_Stop_de_VMs.ps1">
     <img src="https://img.shields.io/badge/Download%20Script%20Start%2FStop-5391FE?style=for-the-badge&logo=powershell&logoColor=white" alt="Download Script">
   </a>
-</div>
-
-<br>
-
-<div align="center">
-  <table>
-    <tr>
-      <td align="center">
-        <img src="https://github.com/user-attachments/assets/6b321a34-4421-4816-b4aa-f783cedea4ec" width="350" alt="Runbook Configuration">
-      </td>
-    </tr>
-    <tr>
-      <td align="center"><i>Configuração do Runbook no Azure Automation</i></td>
-    </tr>
-  </table>
 </div>
 
 #### Passos para configuração:
