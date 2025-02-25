@@ -8,6 +8,18 @@
 ![Status](https://img.shields.io/badge/Status-Production-success?style=for-the-badge)
 ![Documentation](https://img.shields.io/badge/Documentation-Technical-informational?style=for-the-badge)
 
+<a href="https://github.com/mathewsbuzetti/azure-infrastructure-template/blob/main/Scripts/Script_Start_e_Stop_de_VMs.ps1">
+  <img src="https://img.shields.io/badge/DOWNLOAD%20SCRIPT-5391FE?style=for-the-badge&logo=powershell&logoColor=white" alt="Download Script" style="max-width: 100%;">
+</a>
+
+</div>
+
+<p align="center">
+Automatize o ciclo de vida de suas VMs Azure com agendamento inteligente baseado em tags.
+</p>
+
+---
+
 ## 📋 Metadados
 | Metadado | Descrição |
 |----------|-----------|
