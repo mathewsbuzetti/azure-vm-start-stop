@@ -8,17 +8,6 @@
 ![Status](https://img.shields.io/badge/Status-Production-success?style=for-the-badge)
 ![Documentation](https://img.shields.io/badge/Documentation-Technical-informational?style=for-the-badge)
 
-<img src="https://github.com/user-attachments/assets/287872f9-060e-4fa1-beb5-feee15c1bd81" width="0" height="0" alt="" style="display:none">
-<img src="https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.svg?sanitize=true" width="150" alt="Deploy to Azure" style="max-width: 100%;">
-
-</div>
-
-<p align="center">
-Automatize o ciclo de vida de suas VMs Azure com agendamento inteligente baseado em tags.
-</p>
-
----
-
 ## 📋 Metadados
 | Metadado | Descrição |
 |----------|-----------|
@@ -85,24 +74,34 @@ Este script PowerShell automatiza o processo de inicialização e desligamento d
   <table>
     <tr>
       <td align="center" width="20%">
-        <img src="https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/subscriptionicon.png" width="48" height="48" alt="Subscription"><br/>
-        <b>Subscription</b>
+        <a href="https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade">
+          <img src="https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/subscriptionicon.png" width="48" height="48" alt="Subscription"><br/>
+          <b>Subscription</b>
+        </a>
       </td>
       <td align="center" width="20%">
-        <img src="https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/ARMExplorer.png" width="48" height="48" alt="Automation Account"><br/>
-        <b>Automation Account</b>
+        <a href="https://portal.azure.com/#blade/HubsExtension/BrowseResource/resourceType/Microsoft.Automation%2FAutomationAccounts">
+          <img src="https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/ARMExplorer.png" width="48" height="48" alt="Automation Account"><br/>
+          <b>Automation Account</b>
+        </a>
       </td>
       <td align="center" width="20%">
-        <img src="https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/azure-government.png" width="48" height="48" alt="Managed Identity"><br/>
-        <b>Managed Identity</b>
+        <a href="https://portal.azure.com/#blade/HubsExtension/BrowseResource/resourceType/Microsoft.ManagedIdentity%2FUserAssignedIdentities">
+          <img src="https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/azure-government.png" width="48" height="48" alt="Managed Identity"><br/>
+          <b>Managed Identity</b>
+        </a>
       </td>
       <td align="center" width="20%">
-        <img src="https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/LogAnalyticsLog.svg" width="48" height="48" alt="Log Analytics"><br/>
-        <b>Log Analytics</b>
+        <a href="https://portal.azure.com/#blade/HubsExtension/BrowseResource/resourceType/Microsoft.OperationalInsights%2Fworkspaces">
+          <img src="https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/LogAnalyticsLog.svg" width="48" height="48" alt="Log Analytics"><br/>
+          <b>Log Analytics</b>
+        </a>
       </td>
       <td align="center" width="20%">
-        <img src="https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/vm.png" width="48" height="48" alt="Virtual Machines"><br/>
-        <b>Virtual Machines</b>
+        <a href="https://portal.azure.com/#blade/HubsExtension/BrowseResource/resourceType/Microsoft.Compute%2FVirtualMachines">
+          <img src="https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/vm.png" width="48" height="48" alt="Virtual Machines"><br/>
+          <b>Virtual Machines</b>
+        </a>
       </td>
     </tr>
   </table>
@@ -120,23 +119,15 @@ Este script PowerShell automatiza o processo de inicialização e desligamento d
 
 <div align="center">
   <a href="https://github.com/mathewsbuzetti/azure-infrastructure-template/blob/main/Scripts/Script_Start_e_Stop_de_VMs.ps1">
-    <img src="https://img.shields.io/badge/Download%20Script%20Start%2FStop-5391FE?style=for-the-badge&logo=powershell&logoColor=white" alt="Download Script">
+    <img src="https://img.shields.io/badge/DOWNLOAD%20SCRIPT%20START%2FSTOP-5391FE?style=for-the-badge&logo=powershell&logoColor=white" alt="Download Script">
   </a>
 </div>
 
 <br>
 
 <div align="center">
-  <table>
-    <tr>
-      <td align="center">
-        <img src="https://github.com/user-attachments/assets/6b321a34-4421-4816-b4aa-f783cedea4ec" width="350" alt="Runbook Configuration">
-      </td>
-    </tr>
-    <tr>
-      <td align="center"><i>Configuração do Runbook no Azure Automation</i></td>
-    </tr>
-  </table>
+  <img src="https://i.imgur.com/o8qDNGz.png" width="650" alt="Configuração do Runbook no Azure Automation">
+  <p><i>Configuração do Runbook no Azure Automation</i></p>
 </div>
 
 #### Passos para configuração:
@@ -188,16 +179,8 @@ Este script PowerShell automatiza o processo de inicialização e desligamento d
 ### Configuração de Tags na VM
 
 <div align="center">
-  <table>
-    <tr>
-      <td align="center">
-        <img src="https://github.com/user-attachments/assets/881e769c-8a4e-41a9-8218-942059ce02b0" width="550" alt="VM Tags Configuration">
-      </td>
-    </tr>
-    <tr>
-      <td align="center"><i>Adicionando tags às VMs para automação</i></td>
-    </tr>
-  </table>
+  <img src="https://i.imgur.com/Iht8OzS.png" width="650" alt="Adicionando tags às VMs para automação">
+  <p><i>Adicionando tags às VMs para automação</i></p>
 </div>
 
 1. Acesse a VM que deseja configurar o Start/Stop automático
