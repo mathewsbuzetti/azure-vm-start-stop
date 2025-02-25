@@ -287,7 +287,8 @@ Após adicionar as tags, é importante verificar se estão corretamente configur
    - **Shutdown:** Digite "True" para testar o desligamento ou "False" para testar a inicialização
 6. Clique em **OK** para iniciar o runbook
 
-> **Dica:** Recomenda-se testar primeiro com um pequeno conjunto de VMs não críticas. Você pode criar uma tag temporária (ex: "TesteAutomacao: True") em algumas VMs para esse propósito.
+> [!TIP]\
+> Recomenda-se testar primeiro com um pequeno conjunto de VMs não críticas. Você pode criar uma tag temporária (ex: "TesteAutomacao: True") em algumas VMs para esse propósito.
 
 #### 5.2 Verificar os Logs de Execução
 
@@ -345,6 +346,7 @@ Shutdown = $true
 6. Na aba **Saída**, analise os logs detalhados da execução
 7. Procure por mensagens de erro ou avisos que possam indicar o problema
 
+> [!TIP]\
 > **Dica de diagnóstico:** O script utiliza diferentes níveis de log (INFO, SUCCESS, ERROR, WARNING) que podem ajudar a identificar o problema. Preste atenção especial às mensagens marcadas como ERROR ou WARNING.
 
 ## 📄 Licença
