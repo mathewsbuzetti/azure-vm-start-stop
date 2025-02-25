@@ -143,28 +143,10 @@ flowchart TD
 
 1. No editor do runbook que acabou de abrir, apague qualquer código existente
 2. Copie e cole o conteúdo completo do script **Script_Start_e_Stop_de_VMs.ps1**
-3. Verifique se os três parâmetros estão presentes e corretos:
-   - `$TagName`: Nome da tag para identificar as VMs
-   - `$TagValue`: Valor da tag para filtrar as VMs
-   - `$Shutdown`: Booleano que define se as VMs serão desligadas ou iniciadas
 4. Clique em **Salvar**
 
-> **Dica:** Não altere os nomes dos parâmetros, pois os agendamentos farão referência a esses nomes específicos.
-
-#### 2.4 Testar e Publicar o Runbook
-
-1. Clique em **Testar painel** para abrir o painel de teste
-2. Preencha os parâmetros de teste:
-   - **TagName:** Digite "Test" (ou outra tag de teste)
-   - **TagValue:** Digite "Test" (ou outro valor de teste)
-   - **Shutdown:** Digite "False" para testar a inicialização
-3. Clique em **Iniciar** para executar o teste
-4. Verifique os logs de saída para garantir que não há erros
-5. Após o teste bem-sucedido, feche o painel de teste
-6. Clique em **Publicar** para publicar o runbook
-7. Confirme a publicação quando solicitado
-
-> **Importante:** O teste do runbook verifica apenas a sintaxe e a conexão com o Azure. Não se preocupe se nenhuma VM for encontrada neste momento, pois ainda não configuramos as tags reais nas VMs.
+> [!WARNING]\
+> Não altere os nomes dos parâmetros, pois os agendamentos farão referência a esses nomes específicos.
 
 ### 3. Configuração dos Agendamentos
 
@@ -176,7 +158,7 @@ flowchart TD
 4. Preencha as informações:
    - **Nome:** StartVMs_Morning
    - **Descrição:** "Inicia as VMs nos dias úteis pela manhã"
-   - **Iniciar:** Selecione a data e hora de início (recomendado: próximo dia útil às 9h)
+   - **Iniciar:** Selecione a data e hora de início (recomendado: próximo dia útil às 8h)
    - **Fuso horário:** Selecione seu fuso horário local
    - **Recorrência:** Recorrente
    - **Repetir a cada:** 1 Dia
@@ -213,8 +195,6 @@ flowchart TD
    - **Shutdown:** Digite "False" (para iniciar as VMs)
 7. Clique em **OK** para salvar
 
-> **Dica de configuração:** Você pode criar diferentes combinações de tags e valores para gerenciar grupos específicos de VMs. Por exemplo, separar ambientes de desenvolvimento, testes e homologação.
-
 #### 3.4 Vincular o Agendamento Noturno ao Runbook
 
 1. Na mesma tela do runbook, clique novamente em **Vincular a um agendamento**
@@ -228,17 +208,7 @@ flowchart TD
 
 ### 4. Preparação das VMs
 
-#### 4.1 Identificar VMs Alvo
-
-Identifique todas as VMs que você deseja incluir na automação de start/stop. Normalmente, estas serão:
-- VMs de ambiente de desenvolvimento
-- VMs de teste e QA
-- VMs de homologação
-- Qualquer VM não-produtiva que não precisa ficar disponível 24/7
-
-> **Atenção:** Verifique cuidadosamente quais VMs devem ser incluídas. Não inclua VMs de produção a menos que tenha certeza absoluta de que podem ser desligadas nos horários programados.
-
-#### 4.2 Adicionar Tags às VMs
+#### 4.1 Adicionar Tags às VMs
 
 Para cada VM que você deseja incluir na automação:
 
@@ -246,57 +216,11 @@ Para cada VM que você deseja incluir na automação:
 2. Clique na VM que deseja gerenciar
 3. No menu lateral, selecione **Tags**
 4. Adicione a tag com o mesmo nome e valor configurados nos agendamentos:
-   - **Nome:** Digite o nome da tag (ex: "Ambiente")
-   - **Valor:** Digite o valor da tag (ex: "Desenvolvimento")
+   - **Nome:** Digite o nome da tag (ex: "start")
+   - **Valor:** Digite o valor da tag (ex: "07:00")
+   - **Nome:** Digite o nome da tag (ex: "stop")
+   - **Valor:** Digite o valor da tag (ex: "19:00")
 5. Clique em **Salvar**
-
-**Adicionar Tags em Lote:**
-1. Na lista de Máquinas Virtuais, selecione todas as VMs desejadas
-2. Clique em **Atribuir tags** na barra de menu superior
-3. Adicione o nome e valor da tag
-4. Clique em **Salvar**
-
-**Estratégias de Tagging Eficientes:**
-- **Ambiente:Desenvolvimento** - para VMs de desenvolvimento
-- **Ambiente:Teste** - para VMs de teste
-- **Ambiente:Homologação** - para VMs de homologação
-- **AutoStartStop:True** - abordagem genérica para todas as VMs
-
-#### 4.3 Verificar a Configuração das Tags
-
-Após adicionar as tags, é importante verificar se estão corretamente configuradas:
-
-1. No Portal Azure, acesse **Máquinas Virtuais**
-2. Use o filtro na parte superior para filtrar por sua tag (ex: "Ambiente: Desenvolvimento")
-3. Confirme se todas as VMs que deveriam estar incluídas aparecem na lista filtrada
-4. Se alguma VM estiver faltando, verifique se a tag foi adicionada corretamente
-
-> **Lembre-se:** As tags no Azure são case-sensitive. Certifique-se de que o nome e o valor da tag correspondam exatamente aos configurados nos agendamentos do Runbook.
-
-### 5. Teste e Monitoramento
-
-#### 5.1 Executar Teste Manual
-
-1. No Portal Azure, acesse sua **Conta de Automação**
-2. No menu lateral, em **Recursos de automação**, selecione **Runbooks**
-3. Clique no runbook **START_STOP_VMs**
-4. Na barra de menu superior, clique em **Iniciar**
-5. Preencha os parâmetros:
-   - **TagName:** Digite o nome da tag configurada nas VMs (ex: "Ambiente")
-   - **TagValue:** Digite o valor da tag configurada nas VMs (ex: "Desenvolvimento")
-   - **Shutdown:** Digite "True" para testar o desligamento ou "False" para testar a inicialização
-6. Clique em **OK** para iniciar o runbook
-
-#### 5.2 Verificar os Logs de Execução
-
-1. Na tela do runbook, clique no **Job** que acabou de ser iniciado na seção "Jobs"
-2. Observe o **Status** do job (Em execução, Concluído, Com falha)
-3. Revise a saída na aba **Saída**:
-   - Verifique se a autenticação no Azure foi bem-sucedida
-   - Confirme se as VMs esperadas foram encontradas
-   - Observe as mensagens sobre o estado das VMs e as ações realizadas
-   - Verifique se há mensagens de erro ou aviso
-4. Acesse **Máquinas Virtuais** no Portal Azure para confirmar visualmente que as VMs foram realmente iniciadas ou paradas conforme o comando
 
 #### 5.3 Monitorar Execuções Agendadas
 
