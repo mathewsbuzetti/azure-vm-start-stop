@@ -313,24 +313,6 @@ Após confirmar que o teste manual funciona, monitore as primeiras execuções a
 
 ## 📝 Parâmetros do Script
 
-```powershell
-Param(
-  [Parameter(Mandatory = $true)]
-  [ValidateNotNullOrEmpty()]
-  [String]
-  $TagName,
-  
-  [Parameter(Mandatory = $true)]
-  [ValidateNotNullOrEmpty()]
-  [String]
-  $TagValue,
-  
-  [Parameter(Mandatory = $true)]
-  [Boolean]
-  $Shutdown
-)
-```
-
 Os parâmetros abaixo devem ser configurados nos agendamentos do Runbook:
 
 | Parâmetro | Descrição | Exemplo | Obrigatório |
