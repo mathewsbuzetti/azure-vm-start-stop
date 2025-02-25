@@ -21,43 +21,14 @@
 
 **Automatize totalmente o ciclo de início e parada das suas máquinas virtuais Azure com base em tags e agendamentos personalizados. Solução ideal para ambientes não-produtivos como desenvolvimento, testes, QA, e homologação.**
 
-[![Download Script](https://img.shields.io/badge/Download%20Script-Start%2FStop%20VMs-blue?style=for-the-badge&logo=powershell)](https://github.com/mathewsbuzetti/azure-infrastructure-template/blob/main/Scripts/Script_Start_e_Stop_de_VMs.ps1)
-
 ## 📌 Índice
-- [📊 Visão Geral](#-visão-geral)
 - [✨ Benefícios-Chave](#-benefícios-chave)
 - [🔍 Como Funciona](#-como-funciona)
 - [🚀 Guia de Início Rápido](#-guia-de-início-rápido)
 - [⚙️ Pré-requisitos](#️-pré-requisitos)
 - [🔧 Guia de Configuração Detalhado](#-guia-de-configuração-detalhado)
 - [📝 Parâmetros do Script](#-parâmetros-do-script)
-- [❓ Perguntas Frequentes](#-perguntas-frequentes)
-- [⚠️ Resolução de Problemas](#-resolução-de-problemas)
 - [📄 Licença](#-licença)
-
-## 📊 Visão Geral
-
-Esta solução **totalmente automatizada** gerencia o ciclo de vida de máquinas virtuais no Azure com base em tags personalizáveis. Ideal para ambientes não-produtivos (desenvolvimento, testes, QA, homologação), permite programar o desligamento e inicialização automáticos das VMs de acordo com seus horários de trabalho.
-
-```mermaid
-flowchart LR
-    subgraph Azure["Azure Cloud"]
-        direction TB
-        AZ[Azure Automation] -.-> ID[Identidade Gerenciada]
-        AZ --> SCH1[Agendamento Matutino\n9h - Dias Úteis]
-        AZ --> SCH2[Agendamento Noturno\n19h - Dias Úteis]
-        SCH1 --> |Parâmetro: Shutdown=false| RUN[Runbook\nSTART_STOP_VMs]
-        SCH2 --> |Parâmetro: Shutdown=true| RUN
-        RUN -.- ID
-        ID --> |Autenticação Segura| VMs["VMs com Tags\n[Ambiente: Dev]\n[Ambiente: QA]"]
-    end
-```
-
-**A solução é perfeita para:**
-- 💻 Times de desenvolvimento com ambientes dedicados
-- 🧪 Ambientes de homologação e testes
-- 🏢 Empresas que desejam otimizar custos na nuvem
-- 🔍 Equipes DevOps gerenciando múltiplos ambientes
 
 ## ✨ Benefícios-Chave
 
@@ -421,53 +392,6 @@ TagName = "Ambiente"
 TagValue = "Desenvolvimento" 
 Shutdown = $true
 ```
-
-## ❓ Perguntas Frequentes
-
-<details>
-<summary><b>🔄 Posso ter diferentes agendamentos para diferentes ambientes?</b></summary>
-Sim! Basta criar múltiplos agendamentos com diferentes valores de parâmetros. Por exemplo, você pode ter um agendamento para o ambiente de desenvolvimento (TagValue = "Dev") e outro para o ambiente de testes (TagValue = "QA").
-</details>
-
-<details>
-<summary><b>🌐 A solução funciona em todas as regiões do Azure?</b></summary>
-Sim, a solução é independente de região e funcionará em qualquer região do Azure onde as VMs estejam hospedadas.
-</details>
-
-<details>
-<summary><b>⏱️ Como ajustar o fuso horário dos agendamentos?</b></summary>
-O Azure Automation utiliza UTC por padrão. Ao criar os agendamentos, certifique-se de ajustar o horário conforme seu fuso horário local. Por exemplo, se você está no horário de Brasília (UTC-3), para iniciar às 9h, configure o agendamento para 12h UTC.
-</details>
-
-<details>
-<summary><b>🔍 Como saber se o script está funcionando corretamente?</b></summary>
-Você pode verificar os logs de execução do Runbook na seção "Jobs" da sua Conta de Automação. Além disso, o status das VMs no portal Azure mostrará se elas estão sendo iniciadas e paradas nos horários programados.
-</details>
-
-<details>
-<summary><b>🛑 E se eu precisar manter uma VM ligada fora do horário normal?</b></summary>
-Basta remover temporariamente a tag da VM ou adicionar uma tag de exceção. O script só afetará VMs que correspondam exatamente aos critérios de tag especificados.
-</details>
-
-<details>
-<summary><b>🔁 Como posso sequenciar a inicialização de VMs com dependências?</b></summary>
-Para cenários com dependências entre aplicações, você pode:
-<ol>
-<li>Modificar o script para incluir lógica de sequenciamento (usando tags adicionais como 'StartupOrder')</li>
-<li>Criar múltiplos runbooks com diferentes agendamentos, com alguns minutos de intervalo entre eles</li>
-<li>Utilizar soluções de orquestração mais avançadas, como Azure Logic Apps</li>
-</ol>
-</details>
-
-## ⚠️ Resolução de Problemas
-
-| Problema | Possíveis Causas | Soluções |
-|----------|----------------|---------|
-| **Erro de autenticação: "Erro de identidade não configurada"** | • Identidade Gerenciada não ativada<br>• Problemas de conectividade com o AAD | • Verifique se a Identidade Gerenciada está ativada<br>• Confirme o status "Ativado" para a identidade |
-| **Erro de permissão: "Acesso negado"** | • Falta do papel "Virtual Machine Contributor"<br>• VMs em assinatura diferente | • Verifique as permissões da Identidade Gerenciada<br>• Conceda permissões no nível adequado |
-| **Nenhuma VM encontrada com a tag especificada** | • Tags incorretamente configuradas<br>• Case-sensitivity em nomes/valores | • Verifique a grafia exata das tags<br>• Confirme se as tags foram salvas |
-| **VMs não iniciam/param conforme agendado** | • Fuso horário incorreto<br>• Parâmetros errados no agendamento | • Verifique o fuso horário no agendamento<br>• Confirme os parâmetros do runbook |
-| **Erro: "A VM está em estado transitório"** | • VM em processo de alteração de estado<br>• Manutenção do Azure | • Aguarde a conclusão do estado atual<br>• Verifique os logs de diagnóstico da VM |
 
 ### Como Verificar os Logs de Execução
 
