@@ -81,7 +81,7 @@ flowchart TD
 ## 🚀 Guia de Início Rápido
 
 1. **📥 Obtenha o Script**
-   - [![Download Script](https://img.shields.io/badge/Download%20Script-Start%2FStop%20VMs-blue?style=for-the-badge&logo=powershell)](https://github.com/mathewsbuzetti/azure-infrastructure-template/blob/main/Scripts/Script_Start_e_Stop_de_VMs.ps1)
+ [![Download Script](https://img.shields.io/badge/Download%20Script-Start%2FStop%20VMs-blue?style=for-the-badge&logo=powershell)](https://github.com/mathewsbuzetti/azure-infrastructure-template/blob/main/Scripts/Script_Start_e_Stop_de_VMs.ps1)
 
 2. **🔐 Configure a Conta de Automação**
    - Crie uma Conta de Automação no Azure ou use uma existente
