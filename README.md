@@ -24,7 +24,6 @@
 ## 📌 Índice
 - [✨ Benefícios-Chave](#-benefícios-chave)
 - [🔍 Como Funciona](#-como-funciona)
-- [🚀 Guia de Início Rápido](#-guia-de-início-rápido)
 - [⚙️ Pré-requisitos](#️-pré-requisitos)
 - [🔧 Guia de Configuração Detalhado](#-guia-de-configuração-detalhado)
 - [📝 Parâmetros do Script](#-parâmetros-do-script)
@@ -78,46 +77,6 @@ flowchart TD
 4. **⚙️ Execução**: Realiza a operação de iniciar ou parar conforme o parâmetro `Shutdown`
 5. **📝 Registro**: Documenta detalhadamente cada ação para auditoria e monitoramento
 
-## 🚀 Guia de Início Rápido
-
-1. **📥 Obtenha o Script**
-
- [![Download Script](https://img.shields.io/badge/Download%20Script-Start%2FStop%20VMs-blue?style=for-the-badge&logo=powershell)](https://github.com/mathewsbuzetti/azure-infrastructure-template/blob/main/Scripts/Script_Start_e_Stop_de_VMs.ps1)
-
-2. **🔐 Configure a Conta de Automação**
-   - Crie uma Conta de Automação no Azure ou use uma existente
-   - Ative a Identidade Gerenciada em "Configurações > Identidade"
-   - Atribua o papel "Virtual Machine Contributor" à Identidade Gerenciada
-
-3. **📝 Crie o Runbook**
-   - Na Conta de Automação, vá para "Runbooks" e crie um novo runbook PowerShell
-   - Nomeie como "START_STOP_VMs"
-   - Cole o conteúdo do script e publique o runbook
-
-4. **⏰ Crie os Agendamentos**
-   - Crie dois agendamentos: um para iniciar VMs (9h) e outro para parar (19h)
-   - Configure os agendamentos para executar apenas em dias úteis
-   - Vincule cada agendamento ao runbook com os parâmetros apropriados
-
-5. **🏷️ Adicione Tags às VMs**
-   - Configure as tags nas VMs que deseja incluir na automação
-   - Use o mesmo nome e valor de tag configurados nos agendamentos
-
-6. **✅ Teste a Solução**
-   - Execute um teste manual do runbook para verificar o funcionamento
-   - Monitore os logs para garantir que tudo está funcionando corretamente
-
-## ⚙️ Pré-requisitos
-
-- ✅ Subscrição Azure ativa
-- ✅ Conta de Automação Azure
-- ✅ Identidade Gerenciada ativada na conta de Automação
-- ✅ Permissão "Virtual Machine Contributor" para a Identidade Gerenciada
-- ✅ VMs Azure configuradas com as tags apropriadas
-
-> [!IMPORTANT]  
-> A Identidade Gerenciada é **fundamental** para a segurança da solução. Ela permite que o script se autentique no Azure sem armazenar credenciais, eliminando riscos de vazamento de senhas.
-
 ## 🔧 Guia de Configuração Detalhado
 
 ### 1. Preparação da Conta de Automação
@@ -166,7 +125,7 @@ flowchart TD
 
 #### 2.1 Obter o Script PowerShell
 
-O script completo está disponível neste repositório como `Script_Start_e_Stop_de_VMs.ps1`.
+[![Download Script Start/Stop](https://img.shields.io/badge/Download%20Script%20Start%2FStop-blue?style=flat-square&logo=powershell)](https://github.com/mathewsbuzetti/azure-infrastructure-template/blob/main/Scripts/Script_Start_e_Stop_de_VMs.ps1)
 
 #### 2.2 Criar um Novo Runbook
 
