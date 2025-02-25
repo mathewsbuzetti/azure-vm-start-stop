@@ -27,7 +27,7 @@
 - [⚙️ Pré-requisitos](#️-pré-requisitos)
 - [🔧 Guia de Configuração Detalhado](#-guia-de-configuração-detalhado)
 - [📝 Parâmetros do Script](#-parâmetros-do-script)
-- [📄 Licença](#-licença)
+- [📄 Versionamento](#-Versionamento)
 
 ## ✨ Benefícios-Chave
 
@@ -346,16 +346,7 @@ Shutdown = $true
 > [!WARNING]\
 > **Dica de diagnóstico:** O script utiliza diferentes níveis de log (INFO, SUCCESS, ERROR, WARNING) que podem ajudar a identificar o problema. Preste atenção especial às mensagens marcadas como ERROR ou WARNING.
 
-## 📄 Licença
+## 🔄 Versionamento
 
-Este projeto está licenciado sob a [licença MIT](https://opensource.org/licenses/MIT).
-
----
-
-<div align="center">
-
-**Desenvolvido por [Mathews Buzetti](https://www.linkedin.com/in/mathewsbuzetti)**
-
-**Tem dúvidas ou sugestões? Entre em contato via LinkedIn!**
-
-</div>
+- Versão: 1.0.0
+- Última atualização: 25/02/2025
