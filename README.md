@@ -151,22 +151,6 @@ flowchart LR
 
 *Valores aproximados baseados em preços padrão, podendo variar conforme região e ofertas especiais.
 
-### Economia Anual Estimada por VM
-
-```mermaid
-bar chart
-    title Economia Anual por Tipo de VM
-    x-axis [B2s, D2s v3, E2s v3]
-    y-axis "$" 0 --> 1000
-    bar [255, 765, 1028]
-```
-
-> [!TIP]  
-> Para maximizar a economia, considere estratégias avançadas como:
-> - Agrupamento de VMs por função e criação de agendamentos específicos
-> - Configuração de VMs de teste para execução apenas durante a noite (20h às 6h)
-> - Implementação de agendamentos diferentes para fins de semana
-
 ## 📄 Licença
 
 Este projeto está licenciado sob a [licença MIT](https://opensource.org/licenses/MIT).
