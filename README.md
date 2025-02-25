@@ -309,6 +309,19 @@ Após confirmar que o teste manual funciona, monitore as primeiras execuções a
 3. Confirme que as VMs foram iniciadas ou paradas conforme programado
 4. Configure alertas ou crie um processo de verificação regular para garantir que a automação continue funcionando corretamente ao longo do tempo
 
+### Como Verificar os Logs de Execução
+
+1. Acesse sua **Conta de Automação** no Portal Azure
+2. No menu lateral, em **Recursos de automação**, selecione **Runbooks**
+3. Clique no runbook **START_STOP_VMs**
+4. Selecione a aba **Jobs** para ver todas as execuções
+5. Clique no job específico que deseja analisar
+6. Na aba **Saída**, analise os logs detalhados da execução
+7. Procure por mensagens de erro ou avisos que possam indicar o problema
+
+> [!WARNING]\
+> **Dica de diagnóstico:** O script utiliza diferentes níveis de log (INFO, SUCCESS, ERROR, WARNING) que podem ajudar a identificar o problema. Preste atenção especial às mensagens marcadas como ERROR ou WARNING.
+
 ## 📝 Parâmetros do Script
 
 Os parâmetros abaixo devem ser configurados nos agendamentos do Runbook:
@@ -332,19 +345,6 @@ TagName = "Ambiente"
 TagValue = "Desenvolvimento" 
 Shutdown = $true
 ```
-
-### Como Verificar os Logs de Execução
-
-1. Acesse sua **Conta de Automação** no Portal Azure
-2. No menu lateral, em **Recursos de automação**, selecione **Runbooks**
-3. Clique no runbook **START_STOP_VMs**
-4. Selecione a aba **Jobs** para ver todas as execuções
-5. Clique no job específico que deseja analisar
-6. Na aba **Saída**, analise os logs detalhados da execução
-7. Procure por mensagens de erro ou avisos que possam indicar o problema
-
-> [!WARNING]\
-> **Dica de diagnóstico:** O script utiliza diferentes níveis de log (INFO, SUCCESS, ERROR, WARNING) que podem ajudar a identificar o problema. Preste atenção especial às mensagens marcadas como ERROR ou WARNING.
 
 ## 🔄 Versionamento
 
