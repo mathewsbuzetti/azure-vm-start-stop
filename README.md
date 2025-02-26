@@ -1,4 +1,4 @@
-# ⚙️ Automação de Start/Stop para VMs Azure
+# ⚙️ Automação de Start/Stop para VMs Azure (Azure VM Auto Start/Stop)
 
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-Mathews_Buzetti-blue)](https://www.linkedin.com/in/mathewsbuzetti)
 ![Azure](https://img.shields.io/badge/Azure-0078D4?style=flat-square&logo=microsoftazure&logoColor=white)
@@ -10,11 +10,11 @@
 
 | Metadado | Descrição |
 |----------|-----------|
-| **Título** | Automação de Start/Stop para VMs Azure |
+| **Título** | Automação de Start/Stop para VMs Azure (Azure VM Auto Start/Stop) |
 | **Versão** | 1.0.0 |
 | **Data** | 18/02/2025 |
 | **Autor** | Mathews Buzetti |
-| **Tags** | `azure-automation`, `powershell`, `start-stop-vms`, `cost-optimization` |
+| **Tags** | `azure-automation`, `powershell`, `start-stop-vms`, `cost-optimization`, `azure-cost-management`, `devops`, `cloud-automation`, `infrastructure-as-code` |
 | **Status** | ✅ Aprovado para ambiente de produção |
 
 ## 💰 Economize até 70% em seus custos com Azure VMs
@@ -27,7 +27,7 @@
 - [⚙️ Pré-requisitos](#️-pré-requisitos)
 - [🔧 Guia de Configuração Detalhado](#-guia-de-configuração-detalhado)
 - [📝 Parâmetros do Script](#-parâmetros-do-script)
-- [📄 Versionamento](#-Versionamento)
+- [🔄 Versionamento](#-versionamento)
 
 ## ✨ Benefícios-Chave
 
@@ -77,6 +77,64 @@ flowchart TD
 4. **⚙️ Execução**: Realiza a operação de iniciar ou parar conforme o parâmetro `Shutdown`
 5. **📝 Registro**: Documenta detalhadamente cada ação para auditoria e monitoramento
 
+## ⚙️ Pré-requisitos
+
+Antes de começar a configuração, certifique-se de que você possui os seguintes requisitos:
+
+### Requisitos de Acesso
+* Conta Azure ativa com permissões de Owner na subscription
+
+> [!WARNING]  
+> A conta usada para configurar a automação precisa ter permissões suficientes para atribuir a role "Virtual Machine Contributor" à Managed Identity da Automation Account.
+
+### Requisitos Técnicos
+- Azure PowerShell Az module (versão 9.3.0 ou superior)
+- Virtual Machines já criadas para configurar automação
+- Assinatura com cota disponível para Automation Account (verifique limites da sua subscription)
+
+
+
+## 🔧 Guia de Configuração Detalhado
+
+### 1. Preparação da Automation Account
+
+#### 1.1 Criar Automation Account
+
+1. Acesse o **Portal Azure** ([portal.azure.com](https://portal.azure.com))
+2. Clique em **Create a resource**
+3. Pesquise por **Automation** e selecione **Automation Account**
+4. Clique em **Create**
+5. Preencha os campos necessários:
+   - **Name:** Um nome exclusivo para sua conta (ex: AutomationVMs)
+   - **Subscription:** Selecione sua assinatura Azure
+   - **Resource group:** Selecione existente ou crie um novo
+   - **Region:** Escolha a região mais próxima de você
+6. Clique em **Review + create** e depois em **Create**
+
+#### 1.2 Habilitar Managed Identity
+
+1. Aguarde a criação da Automation Account e acesse-a
+2. No menu lateral, em **Settings**, selecione **Identity**
+3. Na aba **System Assigned**, defina o **Status** como **On**
+   
+![image](https://github.com/user-attachments/assets/021587b9-5323-444d-b9fa-8066481439e3)
+
+4. Clique em **Save**
+5. Na mesma tela acesse a opção **Azure role assignments**:
+   
+![image](https://github.com/user-attachments/assets/14cb07be-9439-4d80-bceb-9f09a7b83fab)
+
+6. Na tela Azure role assignments preencha os dados
+
+   - **Scope:** Subscription
+   - **Subscription:** sua Assinatura
+   - **Role:** Virtual Machine Contributor
+
+![image](https://github.com/user-attachments/assets/cd9b20a0-22ab-44d6-b4ab-67939f66d4cb)
+
+> [!WARNING]  
+> Não atribua mais permissões do que o necessário à Managed Identity. O princípio de "least privilege" deve ser aplicado para maior segurança.
+
 ### 2. Configuração do Script e Runbook
 
 #### 2.1 Obter o Script PowerShell
@@ -104,7 +162,7 @@ flowchart TD
 
 ![image](https://github.com/user-attachments/assets/6b321a34-4421-4816-b4aa-f783cedea4ec)
 
-> [!WARNING]\
+> [!WARNING]  
 > Não altere os nomes dos parâmetros, pois os agendamentos farão referência a esses nomes específicos.
 
 Depois de publicar vai voltar para tela inicial do runbook. Para configurar o Agendamento, siga os passos:
@@ -192,6 +250,27 @@ Preencha as informações:
 > [!WARNING]  
 > **Dica de diagnóstico:** O script utiliza diferentes níveis de log (INFO, SUCCESS, ERROR, WARNING) que podem ajudar a identificar o problema. Preste atenção especial às mensagens marcadas como ERROR ou WARNING.
 
+### 4. Preparação das VMs
+
+#### 4.1 Adicionar Tags às VMs
+
+Para cada VM que você deseja incluir na automação:
+
+1. No Portal Azure, acesse **Virtual Machines**
+2. Clique na VM que deseja gerenciar
+3. No menu lateral, selecione **Tags**
+4. Adicione a tag com o mesmo nome e valor configurados nos agendamentos:
+   - **Name:** Digite o nome da tag (ex: "start")
+   - **Value:** Digite o valor da tag (ex: "07:00")
+   - **Name:** Digite o nome da tag (ex: "stop")
+   - **Value:** Digite o valor da tag (ex: "19:00")
+5. Clique em **Save**
+
+![image](https://github.com/user-attachments/assets/4b7774eb-3098-4083-8a4a-7031ac4de81b)
+
+> [!WARNING]  
+> As tags são case-sensitive. Certifique-se de que o nome e valor das tags nas VMs correspondam exatamente ao configurado nos agendamentos do Runbook.
+
 ## 📝 Parâmetros do Script
 
 Os parâmetros abaixo devem ser configurados nos agendamentos do Runbook:
@@ -204,15 +283,15 @@ Os parâmetros abaixo devem ser configurados nos agendamentos do Runbook:
 
 **Exemplo de configuração para agendamento matutino:**
 ```powershell
-TagName = "Ambiente"
-TagValue = "Desenvolvimento" 
+TagName = "Environment"
+TagValue = "Development" 
 Shutdown = $false
 ```
 
 **Exemplo de configuração para agendamento noturno:**
 ```powershell
-TagName = "Ambiente"
-TagValue = "Desenvolvimento" 
+TagName = "Environment"
+TagValue = "Development" 
 Shutdown = $true
 ```
 
