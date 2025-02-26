@@ -260,19 +260,6 @@ Preencha as informações:
 
 ![image](https://github.com/user-attachments/assets/eed13269-9512-47a5-b2f8-074f896066d7)
 
-### Como Verificar os Logs de Execução
-
-1. Acesse sua **Automation Account** no Portal Azure
-2. No menu lateral, em **Process Automation**, selecione **Runbooks**
-3. Clique no runbook **START_STOP_VMs**
-4. Selecione a aba **Jobs** para ver todas as execuções
-5. Clique no job específico que deseja analisar
-6. Na aba **Output**, analise os logs detalhados da execução
-7. Procure por mensagens de erro ou avisos que possam indicar o problema
-
-> [!WARNING]  
-> **Dica de diagnóstico:** O script utiliza diferentes níveis de log (INFO, SUCCESS, ERROR, WARNING) que podem ajudar a identificar o problema. Preste atenção especial às mensagens marcadas como ERROR ou WARNING.
-
 ### 4. Preparação das VMs
 
 #### 4.1 Adicionar Tags às VMs
@@ -292,7 +279,20 @@ Para cada VM que você deseja incluir na automação:
 ![image](https://github.com/user-attachments/assets/bad363fa-956b-442c-9ec4-cdf3fd3ca94e)
 
 > [!WARNING]  
-> As tags são case-sensitive. Certifique-se de que o nome e valor das tags nas VMs correspondam exatamente ao configurado nos agendamentos do Runbook.
+> Certifique-se de que o nome e valor das tags nas VMs correspondam exatamente ao configurado nos agendamentos do Runbook.
+
+### Como Verificar os Logs de Execução
+
+1. Acesse sua **Automation Account** no Portal Azure
+2. No menu lateral, em **Process Automation**, selecione **Runbooks**
+3. Clique no runbook **START_STOP_VMs**
+4. Selecione a aba **Jobs** para ver todas as execuções
+5. Clique no job específico que deseja analisar
+6. Na aba **Output**, analise os logs detalhados da execução
+7. Procure por mensagens de erro ou avisos que possam indicar o problema
+
+> [!WARNING]  
+> **Dica de diagnóstico:** O script utiliza diferentes níveis de log (INFO, SUCCESS, ERROR, WARNING) que podem ajudar a identificar o problema. Preste atenção especial às mensagens marcadas como ERROR ou WARNING.
 
 ## 📝 Parâmetros do Script
 
