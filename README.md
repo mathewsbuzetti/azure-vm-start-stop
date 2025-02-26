@@ -153,7 +153,7 @@ flowchart TD
    - **Subscription:** sua Assinatura
    - **Role:** Virtual Machine Contributor
 
-![image](https://github.com/user-attachments/assets/cd9b20a0-22ab-44d6-b4ab-67939f66d4cb)
+![image](https://github.com/user-attachments/assets/c66f6465-992f-4980-84f7-0a16f4820e7f)
 
 > [!WARNING]  
 > Não atribua mais permissões do que o necessário à Managed Identity. O princípio de "least privilege" deve ser aplicado para maior segurança.
