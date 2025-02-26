@@ -45,9 +45,12 @@ O script PowerShell opera através de um processo otimizado e seguro com sistema
 
 ```mermaid
 flowchart TD
-    A[Início do Runbook Agendado] --> B[Autenticação via\nIdentidade Gerenciada]
-    B --> C[Busca VMs por tag\nNome: TagName\nValor: TagValue]
-    C --> D{Verificar parâmetro\nShutdown}
+    A[Início do Runbook Agendado] --> B[Autenticação via Managed Identity]
+    B --> C[Busca VMs por tag
+    Nome: TagName
+    Valor: TagValue]
+    C --> D{Verificar parâmetro
+    Shutdown}
     
     D -->|Shutdown = true| E[Filtrar VMs ligadas]
     D -->|Shutdown = false| F[Filtrar VMs desligadas]
@@ -55,16 +58,22 @@ flowchart TD
     E --> G[Para cada VM em execução]
     F --> H[Para cada VM parada]
     
-    G --> G1{VM está em\nestado transitório?}
-    G1 -->|Sim| G2[Aguardar estabilização\nou pular]
+    G --> G1{VM está em
+    estado transitório?}
+    G1 -->|Sim| G2[Aguardar estabilização
+    ou pular]
     G1 -->|Não| G3[Parar VM]
-    G3 --> G4[Registrar evento\nno log]
+    G3 --> G4[Registrar evento
+    no log]
     G2 --> G4
     
-    H --> H1{VM está em\nestado transitório?}
-    H1 -->|Sim| H2[Aguardar estabilização\nou pular]
+    H --> H1{VM está em
+    estado transitório?}
+    H1 -->|Sim| H2[Aguardar estabilização
+    ou pular]
     H1 -->|Não| H3[Iniciar VM]
-    H3 --> H4[Registrar evento\nno log]
+    H3 --> H4[Registrar evento
+    no log]
     H2 --> H4
     
     G4 --> I[Fim do Runbook]
