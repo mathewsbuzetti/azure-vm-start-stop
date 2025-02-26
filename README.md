@@ -304,20 +304,6 @@ Os parâmetros abaixo devem ser configurados nos agendamentos do Runbook:
 | `TagValue` | Valor da tag para filtrar as VMs | "08:00" | ✅ |
 | `Shutdown` | Define a ação (true = desligar, false = iniciar) | true | ✅ |
 
-**Exemplo de configuração para agendamento matutino:**
-```powershell
-TagName = "Environment"
-TagValue = "Development" 
-Shutdown = $false
-```
-
-**Exemplo de configuração para agendamento noturno:**
-```powershell
-TagName = "Environment"
-TagValue = "Development" 
-Shutdown = $true
-```
-
 ## 🔄 Versionamento
 
 - Versão: 1.0.0
