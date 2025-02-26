@@ -77,44 +77,6 @@ flowchart TD
 4. **⚙️ Execução**: Realiza a operação de iniciar ou parar conforme o parâmetro `Shutdown`
 5. **📝 Registro**: Documenta detalhadamente cada ação para auditoria e monitoramento
 
-## 🔧 Guia de Configuração Detalhado
-
-### 1. Preparação da Conta de Automação
-
-#### 1.1 Criar Conta de Automação
-
-1. Acesse o **Portal Azure** ([portal.azure.com](https://portal.azure.com))
-2. Clique em **Criar um recurso**
-3. Pesquise por **Automation** e selecione **Conta de Automação**
-4. Clique em **Criar**
-5. Preencha os campos necessários:
-   - **Nome:** Um nome exclusivo para sua conta (ex: AutomacaoVMs)
-   - **Assinatura:** Selecione sua assinatura Azure
-   - **Grupo de recursos:** Selecione existente ou crie um novo
-   - **Região:** Escolha a região mais próxima de você
-6. Clique em **Revisar + criar** e depois em **Criar**
-
-#### 1.2 Habilitar Identidade Gerenciada
-
-1. Aguarde a criação da conta de automação e acesse-a
-2. No menu lateral, em **Configurações**, selecione **Identidade**
-3. Na aba **System Assigned**, defina o **Status** como **On**
-   
-![image](https://github.com/user-attachments/assets/021587b9-5323-444d-b9fa-8066481439e3)
-
-4. Clique em **Salvar**
-5. Na mesma tela acessar opção Permissions:
-   
-![image](https://github.com/user-attachments/assets/14cb07be-9439-4d80-bceb-9f09a7b83fab)
-
-6. Na tela Azure role assignments preencha os dados
-
-   - **Scope:** Subscription
-   - **Subscription:** sua Assinatura
-   - **Role:** Virtual Machine Contributor
-
-![image](https://github.com/user-attachments/assets/cd9b20a0-22ab-44d6-b4ab-67939f66d4cb)
-
 ### 2. Configuração do Script e Runbook
 
 #### 2.1 Obter o Script PowerShell
@@ -123,127 +85,111 @@ flowchart TD
 
 #### 2.2 Criar um Novo Runbook
 
-1. Acesse sua **Conta de Automação** no Portal Azure
-2. No menu lateral, em **Recursos de automação**, selecione **Runbooks**
-3. Clique em **+ Criar um runbook**
+1. Acesse sua **Automation Account** no Portal Azure
+2. No menu lateral, em **Process Automation**, selecione **Runbooks**
+3. Clique em **+ Create a runbook**
 4. Preencha as informações:
-   - **Nome:** START_STOP_VMs
-   - **Tipo de runbook:** PowerShell
-   - **Versão do Runtime:** 5.1
-   - **Descrição:** "Automação para iniciar e parar VMs com base em tags"
-5. Clique em **Criar**
+   - **Name:** START_STOP_VMs
+   - **Runbook type:** PowerShell
+   - **Runtime version:** 5.1
+   - **Description:** "Automação para iniciar e parar VMs com base em tags"
+5. Clique em **Create**
 
 #### 2.3 Importar o Script
 
 1. No editor do runbook que acabou de abrir, apague qualquer código existente
 2. Copie e cole o conteúdo completo do script **Script_Start_e_Stop_de_VMs.ps1**
-4. Clique em **Salve**
-5. Depois em **Publish**
+3. Clique em **Save**
+4. Depois em **Publish**
 
 ![image](https://github.com/user-attachments/assets/6b321a34-4421-4816-b4aa-f783cedea4ec)
 
 > [!WARNING]\
 > Não altere os nomes dos parâmetros, pois os agendamentos farão referência a esses nomes específicos.
 
-Depois de publicar vai voltar para tela inicial do runbook voltando você vai configurar o Agendamento segue o passo:
+Depois de publicar vai voltar para tela inicial do runbook. Para configurar o Agendamento, siga os passos:
 
-6. Acessar opção Resources e depois Schedules:
+6. Acesse a opção **Resources** e depois **Schedules**:
 
 ![image](https://github.com/user-attachments/assets/bcbd0e63-2724-4746-ab25-118f3a1ad37a)
 
-7. Na tela de Schedules você vai apertar em Add a Schedule e vai aparecer duas opçãoc conforme a imagem abaixo:
+7. Na tela de **Schedules**, clique em **Add a Schedule** e aparecerão duas opções conforme a imagem abaixo:
 
 ![image](https://github.com/user-attachments/assets/641cd254-fb40-418a-9258-c09af387587f)
 
-8. Vamos configurar primeiro o Schedule nesse exemplo meu coloquei para ligar vm as 08:00 da manhã:
+8. Vamos configurar primeiro o Schedule. Neste exemplo, configurei para ligar VMs às 08:00 da manhã:
 
 Preencha as informações:
-   - **Nome:** StartVMs_Morning
-   - **Descrição:** "Inicia as VMs nos dias úteis pela manhã"
-   - **Iniciar:** Selecione a data e hora de início (recomendado: próximo dia útil às 8h)
-   - **Fuso horário:** Selecione seu fuso horário local
-   - **Recorrência:** Recorrente
-   - **Repetir a cada:** 1 Dia
-   - **Definir expiração:** Não 
-   - **Dias da semana:** Selecione apenas os dias úteis (Segunda a Sexta)
+   - **Name:** StartVMs_Morning
+   - **Description:** "Inicia as VMs nos dias úteis pela manhã"
+   - **Starts:** Selecione a data e hora de início (recomendado: próximo dia útil às 8h)
+   - **Time zone:** Selecione seu fuso horário local
+   - **Recurrence:** Recurring
+   - **Recur every:** 1 Day
+   - **Set expiration:** No 
+   - **Week days:** Selecione apenas os dias úteis (Monday to Friday)
 
-> **Atenção ao Fuso Horário:** O Azure Automation usa UTC por padrão. Certifique-se de selecionar o fuso horário correto para que as VMs sejam iniciadas no horário local desejado.
+> [!WARNING]  
+> O Azure Automation usa UTC por padrão. Certifique-se de selecionar o fuso horário correto para que as VMs sejam iniciadas no horário local desejado.
 
 ![image](https://github.com/user-attachments/assets/70877c7d-e574-4277-8e1d-e6e829823ee7)
 
-9. Vamos configurar agora os Parameters
+9. Agora configure os **Parameters**:
      - TagName: start
      - TagValue: 08:00
      - Shutdown: false (para iniciar)
        
 ![image](https://github.com/user-attachments/assets/bba76498-3f87-4d8c-bb3c-cc2b9c9936cf)
 
-10. Depois aperta em OK para criar o agendamento:
+10. Depois clique em **OK** para criar o agendamento:
 
 ![image](https://github.com/user-attachments/assets/7c2beaf0-1d14-4ace-a40e-51ec4fbba0f5)
 
-Para criar o agendamento de Stop vamos seguir o mesmo passo mais trocando o horario para as 19:00
+Para criar o agendamento de Stop, vamos seguir o mesmo processo, porém alterando o horário para 19:00:
 
-7. Na tela de Schedules você vai apertar em Add a Schedule e vai aparecer duas opçãoc conforme a imagem abaixo:
+11. Na tela de **Schedules**, clique em **Add a Schedule**:
 
 ![image](https://github.com/user-attachments/assets/641cd254-fb40-418a-9258-c09af387587f)
 
-8. Vamos configurar primeiro o Schedule nesse exemplo meu coloquei para ligar vm as 19:00 da noite:
+12. Configure o Schedule para desligar as VMs às 19:00:
 
 Preencha as informações:
-   - **Nome:** StopVMs_Evening
-   - **Descrição:** "Para as VMs nos dias úteis à noite"
-   - **Iniciar:** Selecione a data e hora de início (recomendado: próximo dia útil às 19h)
-   - **Fuso horário:** Selecione seu fuso horário local (mesmo do agendamento anterior)
-   - **Recorrência:** Recorrente
-   - **Repetir a cada:** 1 Dia
-   - **Definir expiração:** Não
-   - **Dias da semana:** Selecione apenas os dias úteis (Segunda a Sexta)
+   - **Name:** StopVMs_Evening
+   - **Description:** "Para as VMs nos dias úteis à noite"
+   - **Starts:** Selecione a data e hora de início (recomendado: próximo dia útil às 19h)
+   - **Time zone:** Selecione seu fuso horário local (mesmo do agendamento anterior)
+   - **Recurrence:** Recurring
+   - **Recur every:** 1 Day
+   - **Set expiration:** No
+   - **Week days:** Selecione apenas os dias úteis (Monday to Friday)
 
-> **Atenção ao Fuso Horário:** O Azure Automation usa UTC por padrão. Certifique-se de selecionar o fuso horário correto para que as VMs sejam iniciadas no horário local desejado.
+> [!WARNING]  
+> O Azure Automation usa UTC por padrão. Certifique-se de selecionar o fuso horário correto para que as VMs sejam paradas no horário local desejado.
 
 ![image](https://github.com/user-attachments/assets/5ddfe4e6-e22a-49d3-b205-d0f4a6a9671d)
 
-9. Vamos configurar agora os Parameters
+13. Configure os **Parameters**:
      - TagName: stop
      - TagValue: 19:00
      - Shutdown: true (para desligar)
        
 ![image](https://github.com/user-attachments/assets/0c9902e5-dd7e-4687-bb4e-6124672a1044)
 
-10. Depois aperta em OK para criar o agendamento:
+14. Depois clique em **OK** para criar o agendamento:
 
 ![image](https://github.com/user-attachments/assets/eed13269-9512-47a5-b2f8-074f896066d7)
 
-### 4. Preparação das VMs
-
-#### 4.1 Adicionar Tags às VMs
-
-Para cada VM que você deseja incluir na automação:
-
-1. No Portal Azure, acesse **Máquinas Virtuais**
-2. Clique na VM que deseja gerenciar
-3. No menu lateral, selecione **Tags**
-4. Adicione a tag com o mesmo nome e valor configurados nos agendamentos:
-   - **Nome:** Digite o nome da tag (ex: "start")
-   - **Valor:** Digite o valor da tag (ex: "07:00")
-   - **Nome:** Digite o nome da tag (ex: "stop")
-   - **Valor:** Digite o valor da tag (ex: "19:00")
-5. Clique em **Salvar**
-
-![image](https://github.com/user-attachments/assets/4b7774eb-3098-4083-8a4a-7031ac4de81b)
-
 ### Como Verificar os Logs de Execução
 
-1. Acesse sua **Conta de Automação** no Portal Azure
-2. No menu lateral, em **Recursos de automação**, selecione **Runbooks**
+1. Acesse sua **Automation Account** no Portal Azure
+2. No menu lateral, em **Process Automation**, selecione **Runbooks**
 3. Clique no runbook **START_STOP_VMs**
 4. Selecione a aba **Jobs** para ver todas as execuções
 5. Clique no job específico que deseja analisar
-6. Na aba **Saída**, analise os logs detalhados da execução
+6. Na aba **Output**, analise os logs detalhados da execução
 7. Procure por mensagens de erro ou avisos que possam indicar o problema
 
-> [!WARNING]\
+> [!WARNING]  
 > **Dica de diagnóstico:** O script utiliza diferentes níveis de log (INFO, SUCCESS, ERROR, WARNING) que podem ajudar a identificar o problema. Preste atenção especial às mensagens marcadas como ERROR ou WARNING.
 
 ## 📝 Parâmetros do Script
