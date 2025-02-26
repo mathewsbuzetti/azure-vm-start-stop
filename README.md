@@ -41,7 +41,7 @@
 
 ## 🔍 Como Funciona
 
-O script PowerShell opera através de um processo otimizado e seguro:
+O script PowerShell opera através de um processo otimizado e seguro com sistema avançado de detecção e registro de erros:
 
 ```mermaid
 flowchart TD
@@ -71,11 +71,35 @@ flowchart TD
     H4 --> I
 ```
 
-1. **📡 Conexão**: Autentica-se ao Azure usando Identidade Gerenciada (sem credenciais expostas)
-2. **🔍 Identificação**: Localiza todas as VMs com as tags especificadas nos parâmetros
-3. **📊 Avaliação**: Analisa o estado atual de cada VM para evitar operações redundantes
-4. **⚙️ Execução**: Realiza a operação de iniciar ou parar conforme o parâmetro `Shutdown`
-5. **📝 Registro**: Documenta detalhadamente cada ação para auditoria e monitoramento
+### Processo de Execução e Tratamento de Erros
+
+1. **📡 Conexão**: 
+   - Autentica-se ao Azure usando Managed Identity (sem credenciais expostas)
+   - Logs detalhados em caso de falha de autenticação com mensagem específica sobre permissões necessárias
+
+2. **🔍 Identificação**: 
+   - Localiza todas as VMs com as tags especificadas nos parâmetros
+   - Detecta quando nenhuma VM é encontrada e registra erro específico no log
+   - Exemplo de log: `"Nenhuma VM encontrada com a TagName 'start' e TagValue '08:00'."`
+
+3. **📊 Avaliação Inteligente**: 
+   - Analisa o estado atual de cada VM para evitar operações redundantes
+   - Detecta automaticamente estados de provisionamento com falha
+   - Exemplo de log: `"VM WebServer01 já está iniciada."` (evitando operação desnecessária)
+   - Exemplo de erro: `"A operação de provisionamento da VM WebServer02 falhou."`
+
+4. **⚙️ Execução com Tratamento de Erros**: 
+   - Realiza operações separadamente para cada VM com tratamento individual de erros
+   - Se uma VM falhar, as demais continuam sendo processadas
+   - Captura detalhes específicos de cada erro com o try/catch
+   - Exemplo de erro: `"Falha ao iniciar a VM AppServer03: Insufficient quota to complete operation."`
+
+5. **📝 Sistema de Logs de 4 Níveis**: 
+   - **INFO**: Registra ações e estados normais
+   - **SUCCESS**: Confirma operações bem-sucedidas 
+   - **WARNING**: Alerta sobre situações que precisam de atenção
+   - **ERROR**: Detalha falhas com informações para troubleshooting
+   - Todos os logs incluem timestamp para auditoria precisa: `"2025-02-25 08:00:12 - SUCCESS: VM DBServer01 iniciada com sucesso."`
 
 ## ⚙️ Pré-requisitos
 
