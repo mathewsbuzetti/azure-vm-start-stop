@@ -18,7 +18,7 @@
 
 ## 💰 Economize até 70% em seus custos com Azure VMs
 
-**Automatize totalmente o ciclo de início e parada das suas máquinas virtuais Azure com base em tags e agendamentos personalizados. Solução ideal para ambientes não-produtivos como desenvolvimento, testes, QA, e homologação.**
+**Automatize totalmente o ciclo de início e parada das suas máquinas virtuais Azure com base em tags e agendamentos personalizados. Solução confiável e testada para ambientes de produção, desenvolvimento, testes, QA e homologação, garantindo máxima economia de recursos.**
 
 ## 📌 Índice
 - [✨ Benefícios-Chave](#-benefícios-chave)
@@ -298,11 +298,15 @@ Para cada VM que você deseja incluir na automação:
 
 Os parâmetros abaixo devem ser configurados nos agendamentos do Runbook:
 
-| Parâmetro | Descrição | Exemplo | Obrigatório |
-|-----------|-----------|---------|-------------|
-| `TagName` | Nome da tag para identificar as VMs | "start" | ✅ |
-| `TagValue` | Valor da tag para filtrar as VMs | "08:00" | ✅ |
-| `Shutdown` | Define a ação (true = desligar, false = iniciar) | true | ✅ |
+| Parâmetro | Descrição | Valores Possíveis | Exemplo | Obrigatório |
+|-----------|-----------|-------------------|---------|-------------|
+| `TagName` | Nome da tag usada para identificar as VMs que serão gerenciadas | Qualquer string válida para tag do Azure | `"start"` | ✅ |
+| `TagValue` | Valor da tag para filtrar as VMs que receberão a ação | Qualquer string válida | `"08:00"` | ✅ |
+| `Shutdown` | Define se as VMs serão iniciadas ou desligadas | `$true` (desligar VMs)<br>`$false` (iniciar VMs) | `$true` | ✅ |
+
+> [!NOTE]
+> Para agendamento de início (manhã), use `Shutdown = $false`  
+> Para agendamento de parada (noite), use `Shutdown = $true`
 
 ## 🔄 Versionamento
 
