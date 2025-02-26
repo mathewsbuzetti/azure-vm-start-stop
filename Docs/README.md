@@ -192,7 +192,7 @@ Depois de publicar vai voltar para tela inicial do runbook. Para configurar o Ag
 
 6. Acesse a opção **Resources** e depois **Schedules**:
 
-![image](https://github.com/user-attachments/assets/bcbd0e63-2724-4746-ab25-118f3a1ad37a)
+![image](https://github.com/user-attachments/assets/ed5927bf-542d-4eec-bc90-c34cd304f500)
 
 7. Na tela de **Schedules**, clique em **Add a Schedule** e aparecerão duas opções conforme a imagem abaixo:
 
