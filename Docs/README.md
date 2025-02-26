@@ -140,12 +140,12 @@ flowchart TD
 2. No menu lateral, em **Settings**, selecione **Identity**
 3. Na aba **System Assigned**, defina o **Status** como **On**
    
-![image](https://github.com/user-attachments/assets/021587b9-5323-444d-b9fa-8066481439e3)
+![image](https://github.com/user-attachments/assets/6ef3cc85-7bb6-4876-87c3-d7531a6590c6)
 
 4. Clique em **Save**
 5. Na mesma tela acesse a opção **Azure role assignments**:
    
-![image](https://github.com/user-attachments/assets/14cb07be-9439-4d80-bceb-9f09a7b83fab)
+![image](https://github.com/user-attachments/assets/6c05ef8b-574d-44e8-b2d4-b418a83be31f)
 
 6. Na tela Azure role assignments preencha os dados
 
