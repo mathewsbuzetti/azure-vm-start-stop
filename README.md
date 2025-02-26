@@ -45,7 +45,8 @@ O script PowerShell opera através de um processo otimizado e seguro com sistema
 
 ```mermaid
 flowchart TD
-    A[Início do Runbook Agendado] --> B[Autenticação via Managed Identity]
+    A[Início do Runbook Agendado] --> B[Autenticação via 
+    Managed Identity]
     B --> C[Busca VMs por tag
     Nome: TagName
     Valor: TagValue]
