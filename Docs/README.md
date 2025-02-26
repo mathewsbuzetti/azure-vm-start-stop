@@ -21,12 +21,12 @@
 **Automatize totalmente o ciclo de início e parada das suas máquinas virtuais Azure com base em tags e agendamentos personalizados. Solução confiável e testada para ambientes de produção, desenvolvimento, testes, QA e homologação, garantindo máxima economia de recursos.**
 
 ## 📋 Índice
-- [✨ Benefícios-Chave](#-benefícios-chave)
-- [🔍 Como Funciona](#-como-funciona)
-- [⚙️ Pré-requisitos](#️-pré-requisitos)
-- [🔧 Guia de Configuração Detalhado](#-guia-de-configuração-detalhado)
-- [📝 Parâmetros do Script](#-parâmetros-do-script)
-- [🔄 Versionamento](#-versionamento)
+1. [✨ Benefícios-Chave](#-benefícios-chave)
+2. [🔍 Como Funciona](#-como-funciona)
+3. [⚙️ Pré-requisitos](#️-pré-requisitos)
+4. [🔧 Guia de Configuração Detalhado](#-guia-de-configuração-detalhado)
+5. [📝 Parâmetros do Script](#-parâmetros-do-script)
+6. [🔄 Versionamento](#-versionamento)
 
 ## ✨ Benefícios-Chave
 
