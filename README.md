@@ -160,7 +160,7 @@ flowchart TD
 
 ### 2. Configuração do Script e Runbook
 
-#### 2.1 Obter o Script Start-StopAzureVMsByTag.ps1
+#### 2.1 Obter o Script **Start-StopAzureVMsByTag.ps1**
 
 [![Download Script Start/Stop](https://img.shields.io/badge/Download%20Script%20Start%2FStop-blue?style=flat-square&logo=powershell)](https://github.com/mathewsbuzetti/azure-vm-start-stop/blob/main/Start-StopAzureVMsByTag.ps1)
 
@@ -179,7 +179,7 @@ flowchart TD
 #### 2.3 Importar o Script
 
 1. No editor do runbook que acabou de abrir, apague qualquer código existente
-2. Copie e cole o conteúdo completo do script **Script_Start_e_Stop_de_VMs.ps1**
+2. Copie e cole o conteúdo completo do script **Start-StopAzureVMsByTag.ps1**
 3. Clique em **Save**
 4. Depois em **Publish**
 
