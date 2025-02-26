@@ -4,7 +4,6 @@
 ![Azure](https://img.shields.io/badge/Azure-0078D4?style=flat-square&logo=microsoftazure&logoColor=white)
 ![PowerShell](https://img.shields.io/badge/PowerShell-5391FE?style=flat-square&logo=powershell&logoColor=white)
 ![Status](https://img.shields.io/badge/Status-Production-success?style=flat-square)
-![License](https://img.shields.io/badge/License-MIT-yellow.svg)
 
 ## 📋 Metadados
 
@@ -12,7 +11,7 @@
 |----------|-----------|
 | **Título** | Automação de Start/Stop para VMs Azure (Azure VM Auto Start/Stop) |
 | **Versão** | 1.0.0 |
-| **Data** | 18/02/2025 |
+| **Data** | 26/02/2025 |
 | **Autor** | Mathews Buzetti |
 | **Tags** | `azure-automation`, `powershell`, `start-stop-vms`, `cost-optimization`, `azure-cost-management`, `devops`, `cloud-automation`, `infrastructure-as-code` |
 | **Status** | ✅ Aprovado para ambiente de produção |
@@ -113,20 +112,10 @@ flowchart TD
 
 ## ⚙️ Pré-requisitos
 
-Antes de começar a configuração, certifique-se de que você possui os seguintes requisitos:
-
-### Requisitos de Acesso
-* Conta Azure ativa com permissões de Owner na subscription
+* Conta Azure ativa com permissões de **Owner** na subscription
 
 > [!WARNING]  
 > A conta usada para configurar a automação precisa ter permissões suficientes para atribuir a role "Virtual Machine Contributor" à Managed Identity da Automation Account.
-
-### Requisitos Técnicos
-- Azure PowerShell Az module (versão 9.3.0 ou superior)
-- Virtual Machines já criadas para configurar automação
-- Assinatura com cota disponível para Automation Account (verifique limites da sua subscription)
-
-
 
 ## 🔧 Guia de Configuração Detalhado
 
@@ -332,4 +321,4 @@ Shutdown = $true
 ## 🔄 Versionamento
 
 - Versão: 1.0.0
-- Última atualização: 25/02/2025
+- Última atualização: 26/02/2025
