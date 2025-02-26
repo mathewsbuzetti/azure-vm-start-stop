@@ -287,9 +287,9 @@ Para cada VM que você deseja incluir na automação:
    - **Value:** Digite o valor da tag (ex: "07:00")
    - **Name:** Digite o nome da tag (ex: "stop")
    - **Value:** Digite o valor da tag (ex: "19:00")
-5. Clique em **Save**
+5. Clique em **Apply**
 
-![image](https://github.com/user-attachments/assets/4b7774eb-3098-4083-8a4a-7031ac4de81b)
+![image](https://github.com/user-attachments/assets/bad363fa-956b-442c-9ec4-cdf3fd3ca94e)
 
 > [!WARNING]  
 > As tags são case-sensitive. Certifique-se de que o nome e valor das tags nas VMs correspondam exatamente ao configurado nos agendamentos do Runbook.
