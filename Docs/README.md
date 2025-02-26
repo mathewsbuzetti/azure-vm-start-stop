@@ -162,7 +162,7 @@ flowchart TD
 
 #### 2.1 Obter o Script **Start-StopAzureVMsByTag.ps1**
 
-[![Download Script Start/Stop](https://img.shields.io/badge/Download%20Script%20Start%2FStop-blue?style=flat-square&logo=powershell)](https://github.com/mathewsbuzetti/azure-vm-start-stop/blob/main/Scripts/Start-StopAzureVMsByTag.ps1)
+[![Download Script Start/Stop](https://img.shields.io/badge/Download%20Script%20Start%2FStop-blue?style=flat-square&logo=powershell)](https://github.com/mathewsbuzetti/azure-vm-start-stop/blob/main/Script/Start-StopAzureVMsByTag.ps1)
 
 #### 2.2 Criar um Novo Runbook
 
