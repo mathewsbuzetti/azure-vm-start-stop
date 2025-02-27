@@ -4,6 +4,7 @@
 ![Azure](https://img.shields.io/badge/Azure-0078D4?style=flat-square&logo=microsoftazure&logoColor=white)
 ![PowerShell](https://img.shields.io/badge/PowerShell-5391FE?style=flat-square&logo=powershell&logoColor=white)
 ![Status](https://img.shields.io/badge/Status-Production-success?style=flat-square)
+![Documentation](https://img.shields.io/badge/Documentation-Technical-blue?style=flat-square)
 
 ## 📋 Metadados
 
