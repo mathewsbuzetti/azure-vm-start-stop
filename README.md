@@ -12,7 +12,7 @@
 |----------|-----------|
 | **Título** | Automação de Start/Stop para VMs Azure (Azure VM Auto Start/Stop) |
 | **Versão** | 1.0.0 |
-| **Data** | 26/02/2025 |
+| **Data** | 27/02/2025 |
 | **Autor** | Mathews Buzetti |
 | **Tags** | `azure-automation`, `powershell`, `start-stop-vms`, `cost-optimization`, `azure-cost-management`, `devops`, `cloud-automation`, `infrastructure-as-code` |
 | **Status** | ✅ Aprovado para ambiente de produção |
@@ -312,4 +312,4 @@ Os parâmetros abaixo devem ser configurados nos agendamentos do Runbook:
 ## 🔄 Versionamento
 
 - Versão: 1.0.0
-- Última atualização: 26/02/2025
+- Última atualização: 27/02/2025
