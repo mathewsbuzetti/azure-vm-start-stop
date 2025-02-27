@@ -19,7 +19,7 @@
 
 ## 💰 Economize até 70% em seus custos com Azure VMs
 
-**Automatize totalmente o ciclo de início e parada das suas máquinas virtuais Azure com base em tags e agendamentos personalizados. Solução confiável e testada para ambientes de produção, desenvolvimento, testes, QA e homologação, garantindo máxima economia de recursos.**
+**Automatize totalmente o ciclo de Start e Stop **(Deallocate)** das suas máquinas virtuais Azure com base em tags e agendamentos personalizados. Solução confiável e testada para ambientes de produção, desenvolvimento, testes, QA e homologação, garantindo máxima economia de recursos.**
 
 ## 📋 Índice
 1. [Benefícios-Chave](#-benefícios-chave)
