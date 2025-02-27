@@ -137,7 +137,7 @@ flowchart TD
 
 #### 1.2 Habilitar Managed Identity
 
-1. Aguarde a criação da Automation Account e acesse-a
+1. Aguarde a criação da Automation Account
 2. No menu lateral, em **Settings**, selecione **Identity**
 3. Na aba **System Assigned**, defina o **Status** como **On**
    
